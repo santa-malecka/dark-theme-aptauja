@@ -1,0 +1,72 @@
+<style>
+    .sd-page.sd-body__page {
+        width: 900px;
+        margin: auto !important;
+    }
+    .question-image-hld-2 {
+        text-align: center;
+    }
+
+    .question-image-hld-2 img {
+        margin: 0 20px;
+    }
+    .sd-body.sd-body--static {
+        width: 900px;
+        max-width: 900px !important;
+    }
+</style>
+
+
+
+
+<div class="question-image-hld-2">
+    <img height="500px" src="https://i.ibb.co/HhP1LTN/Home.png" id="img-bg1">
+    <img height="500px" src="https://i.ibb.co/HhP1LTN/Home.png" id="img-bg2">
+    <img height="500px" src="https://i.ibb.co/HhP1LTN/Home.png" id="img-bg3">
+</div>
+
+
+
+
+<script>
+    function getSliderByName(name) {
+        return document.querySelector(`[data-name=${name}] input`);
+    }
+
+    function setImgColor(hue, saturation, light, imgId = 'img-bg') {
+        var imgSlider = document.getElementById(imgId);
+        console.debug([imgSlider, hue, saturation, light, imgId, hslToHex(hue.value, saturation.value, light.value)]);
+        imgSlider.style.backgroundColor = hslToHex(hue.value, saturation.value, light.value);
+    }
+
+    function hslToHex(h, s, l) {
+        l /= 100;
+        const a = s * Math.min(l, 1 - l) / 100;
+        const f = n => {
+            const k = (n + h / 30) % 12;
+            const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color).toString(16).padStart(2, '0'); // convert to Hex and prefix "0" if needed
+        };
+        return `#${f(0)}${f(8)}${f(4)}`;
+    }
+
+    for (var i = 1; i < 4; i++) {
+        const hueSlider = getSliderByName('hueSlider' + i);
+        const ii = i;
+
+        hueSlider.addEventListener('change', (e) => {
+            console.debug(ii);
+            setImgColor(e.target, {
+                value: 50
+            }, {
+                value: ii * 10 - 5
+            }, 'img-bg' + ii);
+        });
+
+        setImgColor(hueSlider, {
+            value: 50
+        }, {
+            value: i * 10 - 5
+        }, 'img-bg' + i);
+    }
+</script>

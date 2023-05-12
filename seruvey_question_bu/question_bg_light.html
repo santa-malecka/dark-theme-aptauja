@@ -1,0 +1,52 @@
+<style>
+    .question-image-hld {
+        text-align: center;
+    }
+</style>
+
+
+
+
+<div class="question-image-hld">
+    <img height="500px" src="https://i.ibb.co/HhP1LTN/Home.png" id="img-bg">
+</div>
+
+
+
+
+<script>
+    function getSliderByName(name) {
+        return document.querySelector(`[data-name=${name} input`);
+    }
+
+    function setImgColor(hue, saturation, light, imgId = 'img-bg') {
+        var imgSlider = document.getElementById('img-bg');
+        imgSlider.style.backgroundColor = hslToHex(hue.value, saturation.value, light.value);
+    }
+
+    function hslToHex(h, s, l) {
+        l /= 100;
+        const a = s * Math.min(l, 1 - l) / 100;
+        const f = n => {
+            const k = (n + h / 30) % 12;
+            const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color).toString(16).padStart(2, '0'); // convert to Hex and prefix "0" if needed
+        };
+        return `#${f(0)}${f(8)}${f(4)}`;
+    }
+
+    var lightSlider = getSliderByNmae('lightSlider');
+    lightSlider.addEventListener('change', (e) => {
+        setImgColor({
+            value: 0
+        }, {
+            value: 0
+        }, e.target);
+    });
+
+    setImgColor({
+        value: 0
+    }, {
+        value: 0
+    }, lightSlider);
+</script>

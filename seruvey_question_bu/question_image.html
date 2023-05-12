@@ -1,0 +1,67 @@
+<style>
+    .sd-page.sd-body__page {
+        width: 900px;
+        margin: auto !important;
+    }
+
+    .question-image-hld-2 {
+        text-align: center;
+    }
+
+    .question-image-hld-2 img {}
+
+    .sd-body.sd-body--static {
+        width: 900px;
+        max-width: 900px !important;
+    }
+
+    .bg {
+        margin: 0 20px;
+        display: inline-block;
+        background-color: rgb(41, 41, 41);
+        position: relative;
+        max-height: 500px;
+    }
+
+    #img-icon + img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+
+<div class="question-image-hld-2">
+    <div class="bg" style="background-color: #241a2a">
+        <img height="500px" src="https://i.ibb.co/t8RYC17/Mask-group-2.png" id="img-icon">
+        <img height="500px" src="https://i.ibb.co/xMP3CT8/Mask-group-1-1.png" id="img-overlay">
+    </div>
+</div>
+
+
+<script>
+    function getSliderByName(name) {
+        return document.querySelector(`[data-name=${name}] input`);
+    }
+
+    function setImageSatAndCont(saturationImgSlider, contrastImgSlider) {
+        var imgSlider = document.getElementById('img-overlay');
+        console.debug([saturationImgSlider.value, contrastImgSlider.value,`saturate(${saturationImgSlider.value}) contrast(${contrastImgSlider.value})`]);
+        imgSlider.style.filter = "saturate(" + saturationImgSlider.value + ") contrast(" + contrastImgSlider.value + ")";
+    }
+
+    var saturationImgSlider = getSliderByName('saturationImgSlider');
+    var contrastImgSlider = getSliderByName('contrastImgSlider');
+
+    saturationImgSlider.addEventListener('change', (e) => {
+        setImageSatAndCont(e.target, contrastImgSlider);
+    });
+
+    contrastImgSlider.addEventListener('change', (e) => {
+        setImageSatAndCont(saturationImgSlider, e.target);
+    });
+
+    setImageSatAndCont(saturationImgSlider, contrastImgSlider);
+</script>
