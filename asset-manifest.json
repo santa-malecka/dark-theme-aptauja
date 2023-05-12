@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/dark-theme-aptauja/static/css/main.faff686e.css",
-    "main.js": "/dark-theme-aptauja/static/js/main.598fc76d.js",
+    "main.js": "/dark-theme-aptauja/static/js/main.c9c20baa.js",
     "index.html": "/dark-theme-aptauja/index.html",
     "main.faff686e.css.map": "/dark-theme-aptauja/static/css/main.faff686e.css.map",
-    "main.598fc76d.js.map": "/dark-theme-aptauja/static/js/main.598fc76d.js.map"
+    "main.c9c20baa.js.map": "/dark-theme-aptauja/static/js/main.c9c20baa.js.map"
   },
   "entrypoints": [
     "static/css/main.faff686e.css",
-    "static/js/main.598fc76d.js"
+    "static/js/main.c9c20baa.js"
   ]
 }
